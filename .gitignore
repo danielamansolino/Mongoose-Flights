@@ -1,0 +1,5 @@
+# I add my sensitive info, so that git will ignore this file
+.env
+# I also want to ignore node_modules
+# this is because node_modules is the biggest folder in human history
+node_modules

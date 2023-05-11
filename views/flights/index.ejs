@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <table class="table" id="main-tb">
+        <thead>
+            <tr>
+                <th scope="col">Airline</th>
+                <th scope="col">Airport</th>
+                <th scope="col">Flight Number</th>
+                <th scope="col">Departure</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            <% flights.forEach(function(flight) { %>
+                <tr>
+                    <td scope="row"><%= flight.airline %></td>
+                    <td scope="row"><%= flight.airport %></td>
+                    <td scope="row"><%= flight.flightNo %></td>
+                    <!-- <td><%= flight.departs %></td> -->
+                <td scope="row"><%= flight.departs.toLocaleString('en-US', { 
+                        month: 'long',
+                        day: 'numeric',
+                        year: 'numeric'
+                    }) %></td> 
+                    <td><a href="/flights/<%= flight.id %>">DETAILS</a><td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+<%- include('../partials/footer') %>
