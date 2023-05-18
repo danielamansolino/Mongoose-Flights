@@ -26,6 +26,7 @@ const destinationSchema = new Schema({
     arrival: {
         type: Date, 
         default: function() {
+            // I know that you have see this before in our lessons but don't get into the bad habit of using single letter variables. Be meaningful in your variable names
             let d = new Date()
             return d.setFullYear(d.getFullYear() +1)
         },
@@ -69,6 +70,7 @@ const flightSchema = new Schema({
         type: Date, 
         // default: oneYearFromNow,
         default: function() {
+            // Same comment as above
             let d = new Date()
             return d.setFullYear(d.getFullYear() +1)
         },

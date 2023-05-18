@@ -1,39 +1,39 @@
+// I ran my formatter on this doc to show off how we should be formatting our promise chains for easy readability
 const Ticket = require('../models/ticket')
 const Flight = require('../models/flight')
 
 // // /tickets/new
 // router.get('/new', ticketsCtrl.new)
 function newTicket(req, res) {
-    Flight.findById(req.params.id)
-    .then(flightDoc => {
-        res.render('tickets/new', {title: 'Add Ticket', flight: flightDoc}) 
-    }).catch(err => {
-        console.log('error in newTicket', err)
+	Flight.findById(req.params.id)
+		.then((flightDoc) => {
+			res.render('tickets/new', { title: 'Add Ticket', flight: flightDoc })
+		})
+		.catch((err) => {
+			console.log('error in newTicket', err)
 
-        res.send('error in new ticket check terminal')
-    })
-       
+			res.send('error in new ticket check terminal')
+		})
 }
 // // /tickets
 // router.post('/', ticketsCtrl.create)
 function create(req, res) {
-    req.body.flight = req.params.id
-    console.log('req.body in ticket create \n', req.body)
-    // then we send the req.body to a model method to create
-    Ticket.create(req.body)
-        .then(ticket => {
-            console.log('the new performer', ticket)
+	req.body.flight = req.params.id
+	console.log('req.body in ticket create \n', req.body)
+	// then we send the req.body to a model method to create
+	Ticket.create(req.body)
+		.then((ticket) => {
+			console.log('the new performer', ticket)
 
-            res.redirect(`/flights/${req.params.id}`)
-        })
-        // handle any errors if they occur
-        .catch(err => {
-            console.log('error in newTicket', err)
+			res.redirect(`/flights/${req.params.id}`)
+		})
+		// handle any errors if they occur
+		.catch((err) => {
+			console.log('error in newTicket', err)
 
-            res.send('error in new ticket check terminal')
-        })
+			res.send('error in new ticket check terminal')
+		})
 }
-
 
 // function addTicket(req, res) {
 //     const ticket = new Ticket(req.body);
@@ -42,8 +42,6 @@ function create(req, res) {
 //       res.redirect(`/flights/${req.params.id}`);
 //     });
 //   }
-
-
 
 // // // /tickets/flights/<fligthId>/addTicket
 // // router.post('/flights/:id/addTicket', ticketsCtrl.addTicket)
@@ -70,7 +68,7 @@ function create(req, res) {
 // }
 
 module.exports = {
-    new: newTicket,
-    create,
-    // addTicket
+	new: newTicket,
+	create,
+	// addTicket
 }

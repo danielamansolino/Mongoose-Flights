@@ -7,6 +7,7 @@ function create(req, res) {
             return flight.save()
             .then((flight) => {
                 res.redirect(`/flights/${flight._id}`);
+                // Don't need the second .catch because the first one will catch any errors that happen in this promise chain
             }).catch((err) => {
                 console.log(err);
                 res.status(500).send('Error: ' + err);
